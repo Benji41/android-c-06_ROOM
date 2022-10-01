@@ -1,5 +1,6 @@
 package com.reynoso.roomdemo.data;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -27,10 +28,10 @@ public interface ContactDao {
     void deleteSingleContact(Contact contact);
 
     @Query("SELECT * FROM contact_tb WHERE contact_id")
-    Contact getSingleContact(Contact contact);
+    LiveData <Contact> getSingleContact(Contact contact);
 
     @Query("SELECT * FROM contact_tb")
-    List<Contact> getAllContacts();
+    LiveData<List<Contact>> getAllContacts();
 
     @Update
     int updateContact(Contact contact);
